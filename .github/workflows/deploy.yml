@@ -1,0 +1,21 @@
+name: AI Network Deploy
+on: [push]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Install Dependencies
+        run: pip install netmiko openai
+      - name: Run Agent
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          DEVICE_IP: ${{ secrets.DEVICE_IP }}
+          DEVICE_USER: ${{ secrets.DEVICE_USER }}
+          DEVICE_PASS: ${{ secrets.DEVICE_PASS }}
+        run: python main_agent.py

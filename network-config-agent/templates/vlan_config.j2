@@ -1,0 +1,8 @@
+!
+vlan {{ vlan_id }}
+  name {{ vlan_name }}
+!
+interface Vlan{{ vlan_id }}
+  ip address {{ ip_address }} 255.255.255.0
+  no shutdown
+!

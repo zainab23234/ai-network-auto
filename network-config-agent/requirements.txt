@@ -1,0 +1,4 @@
+netmiko
+openai
+pyyaml
+python-dotenv
